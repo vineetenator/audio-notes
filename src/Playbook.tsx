@@ -9,6 +9,7 @@ import {
   Title,
 } from "./styled";
 import useSWR from "swr";
+import ReactAudioPlayer from "react-audio-player";
 
 const audioNotesApiUrl = "//localhost:3001/audionotes";
 
@@ -70,13 +71,6 @@ const Card = ({
   );
 };
 
-const audioPlayer = (url) => (
-  <audio controls>
-    <source src={url} type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-);
-
 export const Playbook = ({ setPage }) => {
   const { data, error, isLoading } = useSWR(audioNotesApiUrl, fetcher);
   const [activeAudio, setAudio] = useState(null);
@@ -107,7 +101,7 @@ export const Playbook = ({ setPage }) => {
         <Player>
           {activeAudio && (
             <>
-              {audioPlayer(activeAudio.url)}
+              <ReactAudioPlayer src={activeAudio.url} autoPlay controls />
               <p>{activeAudio.audioTitle}</p>
             </>
           )}
