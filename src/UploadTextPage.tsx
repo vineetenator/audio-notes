@@ -1,42 +1,51 @@
-import { Title, Form } from "./styled";
+import {
+  Title,
+  Form,
+  InputTitle,
+  TextArea,
+  Button,
+  ButtonLink,
+} from "./styled";
 import { useState } from "react";
 import { postData } from "./postData";
+import { pages } from "./contants";
 
-// const pollyApiUrl = "./api/express-polly";
 const pollyApiUrl = "//localhost:3001/polly";
 
-export const UploadTextPage = () => {
+export const UploadTextPage = ({ setPage }) => {
   const [textNotes, setTextNotes] = useState("");
+  const [noteTitle, setNoteTitle] = useState("");
 
   const onChangeTextNotes = (event) => {
     const val = event.target.value;
     setTextNotes(val);
   };
 
-  // const callbackSuccess = () => {
-  //   console.log("Success");
-  // };
-
   const onClickConverter = async () => {
     console.log("onClickConverter > textNotes ->", textNotes);
+    const noteName = noteTitle;
     const response = await postData(pollyApiUrl, {
       textNotes,
+      noteName,
     });
-    // console.log("response", response);
+    alert(response.success ? "successfully created" : "failed");
   };
 
   return (
     <>
       <Title>Welcome to Chegg Audio Notes</Title>
       <Form>
-        {/* <div>
-        <label htmlFor="voice">Select a voice:</label>
-        <select id="voice" name="voiceId" disabled>
-          <option value="">Choose a voice...</option>
-        </select>
-      </div> */}
         <div className="text-box-container">
-          <textarea
+          <InputTitle
+            id="noteTitle"
+            onChange={(event) => {
+              const val = event.target.value;
+              setNoteTitle(val);
+            }}
+            maxLength={50}
+            placeholder="Add title to your note..."
+          />
+          <TextArea
             id="textNotes"
             maxLength={1000}
             minLength={15}
@@ -45,8 +54,13 @@ export const UploadTextPage = () => {
             onChange={onChangeTextNotes}
           />
         </div>
-        <button onClick={onClickConverter}>Convert</button>
+        <Button onClick={onClickConverter}>Convert</Button>
       </Form>
+      <div>
+        <ButtonLink onClick={() => setPage(pages.PLAYBOOK)}>
+          Audio note &gt;{" "}
+        </ButtonLink>
+      </div>
     </>
   );
 };

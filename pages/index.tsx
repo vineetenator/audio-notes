@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { Container, Footer, GlobalStyles, Main } from "../src/styled";
 import { UploadTextPage } from "../src/UploadTextPage";
+import { pages } from "../src/contants";
+import { Playbook } from "../src/Playbook";
 
 const Home = () => {
+  const [page, setPage] = useState(pages.CONVERTER);
   return (
     <>
       <Container>
@@ -13,7 +16,11 @@ const Home = () => {
         </Head>
 
         <Main>
-          <UploadTextPage />
+          {page === pages.CONVERTER ? (
+            <UploadTextPage setPage={setPage} />
+          ) : (
+            <Playbook setPage={setPage} />
+          )}
         </Main>
         <Footer>
           <a

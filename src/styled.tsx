@@ -64,9 +64,130 @@ export const Form = styled.div`
     margin-bottom: 20px;
     width: 100%;
   }
+`;
 
-  textarea {
-    width: 100%;
-    height: 200px;
+export const InputTitle = styled.input`
+  border-radius: 4px;
+  position: relative;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(83, 79, 99);
+  font-family: "Aspira Webfont", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: rgb(48, 44, 65);
+  width: 100%;
+  line-height: 1.3;
+  padding: 1rem calc(1rem - 2px) 0.813rem 1rem;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 3rem;
+  text-overflow: ellipsis;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+
+  &:hover,
+  &:focus-visible {
+    border-width: 1px;
+    border-color: rgb(48, 44, 65);
+    outline: 1px solid rgb(48, 44, 65);
+  }
+`;
+
+export const TextArea = styled.textarea`
+  border-radius: 4px;
+  position: relative;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(83, 79, 99);
+  font-family: "Aspira Webfont", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: rgb(48, 44, 65);
+  width: 100%;
+  height: 200px;
+  line-height: 1.3;
+  padding: 1rem calc(1rem - 2px) 0.813rem 1rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+
+  &:hover,
+  &:focus-visible {
+    border-width: 1px;
+    border-color: rgb(48, 44, 65);
+    outline: 1px solid rgb(48, 44, 65);
+  }
+`;
+
+export const Button = styled.button`
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 2rem;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-family: "Aspira Webfont", Helvetica, Arial, sans-serif;
+  border: 0px;
+  width: auto;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0.5rem 1.375rem 0.375rem;
+  line-height: 1.3;
+  letter-spacing: 0.25px;
+  margin: 0px;
+  overflow: visible;
+  text-transform: none;
+  appearance: button;
+  cursor: pointer;
+
+  background: linear-gradient(
+    107.34deg,
+    rgb(230, 87, 0) 0%,
+    rgb(235, 113, 0) 51.33%
+  );
+  color: rgb(255, 255, 255);
+
+  &:hover {
+    transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1) 0ms;
+    transform: scale(1.05);
+    background: rgb(209, 91, 0);
+    cursor: pointer;
+  }
+`;
+
+export const ButtonLink = styled.button`
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 2rem;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-family: "Aspira Webfont", Helvetica, Arial, sans-serif;
+  border: 0px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0.5rem 1.375rem 0.375rem;
+  line-height: 1.3;
+  letter-spacing: 0.25px;
+  margin: 0px;
+  overflow: visible;
+  text-transform: none;
+  appearance: button;
+  cursor: pointer;
+  text-decoration: none;
+  appearance: none;
+  background: transparent;
+  color: rgb(71, 39, 195);
+
+  &:hover,
+  &:active {
+    background: rgb(226, 223, 255);
+    color: rgb(71, 39, 195);
+    cursor: pointer;
   }
 `;
